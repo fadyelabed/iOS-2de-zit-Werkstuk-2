@@ -15,6 +15,8 @@
 		3FA1C88B23041F4200F77B57 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FA1C88923041F4200F77B57 /* LaunchScreen.storyboard */; };
 		3FA1C89623041F4300F77B57 /* Werkstuk2AugustusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA1C89523041F4300F77B57 /* Werkstuk2AugustusTests.swift */; };
 		3FA1C8A123041F4300F77B57 /* Werkstuk2AugustusUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA1C8A023041F4300F77B57 /* Werkstuk2AugustusUITests.swift */; };
+		3FA1C8B02304583300F77B57 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FA1C8AF2304583300F77B57 /* MapKit.framework */; };
+		3FA1C8B223048A8900F77B57 /* CustomPolyline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA1C8B123048A8900F77B57 /* CustomPolyline.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		3FA1C89C23041F4300F77B57 /* Werkstuk2AugustusUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Werkstuk2AugustusUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FA1C8A023041F4300F77B57 /* Werkstuk2AugustusUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Werkstuk2AugustusUITests.swift; sourceTree = "<group>"; };
 		3FA1C8A223041F4300F77B57 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3FA1C8AF2304583300F77B57 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		3FA1C8B123048A8900F77B57 /* CustomPolyline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPolyline.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FA1C8B02304583300F77B57 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +88,7 @@
 				3FA1C89423041F4300F77B57 /* Werkstuk2AugustusTests */,
 				3FA1C89F23041F4300F77B57 /* Werkstuk2AugustusUITests */,
 				3FA1C87B23041F4200F77B57 /* Products */,
+				3FA1C8AE2304583300F77B57 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,6 +107,7 @@
 			children = (
 				3FA1C87D23041F4200F77B57 /* AppDelegate.swift */,
 				3FA1C87F23041F4200F77B57 /* ViewController.swift */,
+				3FA1C8B123048A8900F77B57 /* CustomPolyline.swift */,
 				3FA1C88123041F4200F77B57 /* Main.storyboard */,
 				3FA1C88723041F4200F77B57 /* Assets.xcassets */,
 				3FA1C88923041F4200F77B57 /* LaunchScreen.storyboard */,
@@ -126,6 +133,14 @@
 				3FA1C8A223041F4300F77B57 /* Info.plist */,
 			);
 			path = Werkstuk2AugustusUITests;
+			sourceTree = "<group>";
+		};
+		3FA1C8AE2304583300F77B57 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3FA1C8AF2304583300F77B57 /* MapKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -196,6 +211,11 @@
 				TargetAttributes = {
 					3FA1C87923041F4200F77B57 = {
 						CreatedOnToolsVersion = 10.2.1;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					3FA1C89023041F4300F77B57 = {
 						CreatedOnToolsVersion = 10.2.1;
@@ -261,6 +281,7 @@
 			files = (
 				3FA1C88023041F4200F77B57 /* ViewController.swift in Sources */,
 				3FA1C88623041F4200F77B57 /* Werkstuk2Augustus.xcdatamodeld in Sources */,
+				3FA1C8B223048A8900F77B57 /* CustomPolyline.swift in Sources */,
 				3FA1C87E23041F4200F77B57 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
