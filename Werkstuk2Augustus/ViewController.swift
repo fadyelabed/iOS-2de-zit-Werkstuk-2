@@ -175,4 +175,23 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     }
     
     
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        
+        if let polyline = overlay as? CustomPolyline {
+            //print(polyline.color!)
+            let r = MKPolylineRenderer(overlay: overlay)
+            if(polyline.color! == "VERT") {
+                r.strokeColor = UIColor.green
+            }else if(polyline.color! == "ORANGE") {
+                r.strokeColor = UIColor.orange
+            }else{
+                r.strokeColor = UIColor.red
+            }
+            
+            return r
+        }
+        
+        return MKOverlayRenderer(overlay: overlay)
+        
+    }
 }
