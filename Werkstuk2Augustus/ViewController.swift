@@ -146,6 +146,33 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         
         
     }
+    func haalUitCoreData() {
+        
+        //1
+        guard let appDelegate =
+            UIApplication.shared.delegate as? AppDelegate else {
+                return
+        }
+        
+        let managedContext =
+            appDelegate.persistentContainer.viewContext
+        
+        //2
+        let fetchPolylineCoordinates =
+            NSFetchRequest<NSFetchRequestResult>(entityName: "PolylineSaved")
+        //3
+        do {
+            self.SavedArray = try managedContext.fetch(fetchPolylineCoordinates) as! [PolylineSaved]
+            
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+        
+        print(self.SavedArray[1].color!)
+        print(self.SavedArray[1].polyline!)
+        
+        
+    }
+    
     
 }
-
