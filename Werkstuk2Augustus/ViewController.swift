@@ -18,12 +18,12 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     var locationManager = CLLocationManager()
 
     @IBAction func btnRefresh(_ sender: Any) {
-        refreshMap()
+        reloadMap()
     }
     
     @IBOutlet weak var mapView: MKMapView!
 
-    func refreshMap() {
+    func reloadMap() {
         refreshStrokeline()
         let currentDateTime = Date()
         let formatter = DateFormatter()
@@ -42,7 +42,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         self.mapView.showsUserLocation = true
         self.mapView.delegate = self
         
-        refreshMap()
+        reloadMap()
     }
 
     func refreshStrokeline() {
@@ -61,7 +61,6 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             
             // check for errors
             guard error == nil else {
-                print("error calling GET")
                 print(error!)
                 return
             }
@@ -96,17 +95,12 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                         
                         let coordinateOk = coordinate as? [Double]
                         
-                        //     print(coordinateOk!)
                         
                         let point = CLLocationCoordinate2D(latitude: coordinateOk![1], longitude: coordinateOk![0])
                         
-                        
                         points.append(point)
                         
-                        
                     }
-                    
-                    // print(couleur!)
                     
                     let polyline = CustomPolyline(coordinates: points, count: points.count)
                     polyline.color = couleur!
@@ -116,15 +110,11 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                     PolylineSaveData.color = couleur!
                     PolylineSaveData.polyline = coordinates! as NSObject
                     
-                    //  print("PolylineSavecolor:")
-                    //  print(PolylineSaveData.color!)
-                    
                     do {
                         try managedContext.save()
                     } catch {
                         fatalError("Failure to save context: \(error)")
                     }
-                    
                     
                     self.mapView.addOverlays([polyline])
                     self.mapView.centerCoordinate = points[0]
@@ -136,7 +126,6 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                     self.haalUitCoreData()
                 }
                 
-                
             } catch {
                 print("error")
             }
@@ -144,11 +133,9 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         }
         task.resume()
         
-        
     }
     func haalUitCoreData() {
         
-        //1
         guard let appDelegate =
             UIApplication.shared.delegate as? AppDelegate else {
                 return
@@ -157,10 +144,9 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         let managedContext =
             appDelegate.persistentContainer.viewContext
         
-        //2
         let fetchPolylineCoordinates =
             NSFetchRequest<NSFetchRequestResult>(entityName: "PolylineSaved")
-        //3
+
         do {
             self.SavedArray = try managedContext.fetch(fetchPolylineCoordinates) as! [PolylineSaved]
             
@@ -170,10 +156,8 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         
         print(self.SavedArray[1].color!)
         print(self.SavedArray[1].polyline!)
-        
-        
-    }
     
+    }
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         
